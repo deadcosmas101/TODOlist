@@ -1,9 +1,8 @@
-import os
 import sys
 
 import attr
 
-from domain.tasks.services.task_service import TaskService
+from src.domain.tasks.services.task_service import TaskService
 from src.domain.tasks.entities.task import Task
 
 
@@ -58,6 +57,9 @@ class CLI:
         match_pattern.get(user_input, print)()
 
     def delete_task(self):
+        self.task_service.get_tasks()
+        task_delete_id = input("Введите id для удаления")
+        self.task_service.delete_task(task_delete_id)
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def checkpoint(self):

@@ -12,3 +12,11 @@ class ITaskRepo(ABC):
     @abstractmethod
     def get_tasks(self) -> List[Task]:
         ...
+
+    @abstractmethod
+    def get_by_id(self, id_: int) -> Task:
+        ...
+
+    @abstractmethod
+    def delete_by_id(self, id_: int) -> Task:
+        pass
