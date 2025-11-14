@@ -18,7 +18,7 @@ class CLI:
     def show_tasks(self):
         resalt = self.task_service.get_tasks()
         for task in resalt:
-            print(f"{task.user_task} {task.user_chekpoint}")
+            print(f"[{task.id_}] - {task.user_task} {task.user_chekpoint}")
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def show_menu(self):
@@ -59,7 +59,7 @@ class CLI:
     def delete_task(self):
         self.task_service.get_tasks()
         task_delete_id = input("Введите id для удаления")
-        self.task_service.delete_task(task_delete_id)
+        self.task_service.delete_task(int(task_delete_id))
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def checkpoint(self):
