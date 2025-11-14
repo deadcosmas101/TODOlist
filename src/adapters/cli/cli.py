@@ -1,9 +1,8 @@
-import os
 import sys
 
 import attr
 
-from domain.tasks.services.task_service import TaskService
+from src.domain.tasks.services.task_service import TaskService
 from src.domain.tasks.entities.task import Task
 
 
@@ -19,7 +18,7 @@ class CLI:
     def show_tasks(self):
         resalt = self.task_service.get_tasks()
         for task in resalt:
-            print(f"{task.user_task} {task.user_chekpoint}")
+            print(f"[{task.id_}] - {task.user_task} {task.user_chekpoint}")
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def show_menu(self):
@@ -58,7 +57,13 @@ class CLI:
         match_pattern.get(user_input, print)()
 
     def delete_task(self):
+        self.task_service.get_tasks()
+        task_delete_id = input("Введите id для удаления")
+        self.task_service.delete_task(int(task_delete_id))
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def checkpoint(self):
+        self.task_service.get_tasks()
+        task_checkpoint_id = input("Введите id задачи, которую вы выпольнили")
+        self.task_service.checkpoint(not(task_checkpoint_id))
         input("Нажмите любую кнопку, что бы продолжить ")

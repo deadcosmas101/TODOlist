@@ -1,4 +1,4 @@
-from adapters.composites import create_task_service
+from src.adapters.composites import create_task_service
 from src.adapters.cli.cli import CLI
 
 
