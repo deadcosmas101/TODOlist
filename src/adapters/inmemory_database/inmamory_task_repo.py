@@ -18,5 +18,6 @@ class InmemoryTaskRepo(ITaskRepo):
         return list(self._task_list.values())
 
     def add_task(self, task: Task) -> None:
-        self._task_list[self._last_id + 1] = task
         self._last_id += 1
+        task.id_ = self._last_id
+        self._task_list[self._last_id] = task

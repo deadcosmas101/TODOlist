@@ -2,7 +2,8 @@ import attr
 
 
 @attr.dataclass
-class Task():
+class Task:
     user_task: str
     user_chekpoint: bool
-    
+
+    id_: int | None = None
