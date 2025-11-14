@@ -20,3 +20,6 @@ class ITaskRepo(ABC):
     @abstractmethod
     def delete_by_id(self, id_: int) -> Task:
         ...
+
+    def save(self, task):
+        ...

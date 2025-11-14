@@ -19,5 +19,8 @@ class TaskService:
     def delete_task(self, task_delete_id: int) -> Task:
         return self.task_repo.delete_by_id(task_delete_id)
 
-    def checkpoint(self, task: Task) -> Task:
-        return  self.checkpoint(task)
+    def checkout(self, task_id: int) -> Task:
+        task = self.task_repo.get_by_id(task_id)
+        if task:
+            task.user_checkpoint = not task.user_checkpoint
+            self.task_repo.save(task)

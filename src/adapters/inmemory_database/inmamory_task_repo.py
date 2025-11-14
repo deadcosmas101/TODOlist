@@ -24,3 +24,6 @@ class InmemoryTaskRepo(ITaskRepo):
 
     def checkpoint_trigger(self, task: Task) -> bool:
         return not task
+
+    def save(self, task: Task) -> None:
+        self._task_list[task.id_] = task

@@ -18,7 +18,7 @@ class CLI:
     def show_tasks(self):
         resalt = self.task_service.get_tasks()
         for task in resalt:
-            print(f"[{task.id_}] - {task.user_task} {task.user_chekpoint}")
+            print(f"[{task.id_}] - {task.user_task} {task.user_checkpoint}")
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def show_menu(self):
@@ -50,7 +50,7 @@ class CLI:
             return
 
         if user_input not in range(1, 6):
-            print("Такого пункта - нету")
+            print("Такого пункта - нет")
             input()
             return
 
@@ -58,12 +58,16 @@ class CLI:
 
     def delete_task(self):
         self.task_service.get_tasks()
-        task_delete_id = input("Введите id для удаления")
+        task_delete_id = input("Введите id для удаления ")
         self.task_service.delete_task(int(task_delete_id))
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def checkpoint(self):
-        self.task_service.get_tasks()
-        task_checkpoint_id = input("Введите id задачи, которую вы выпольнили")
-        self.task_service.checkpoint(not(task_checkpoint_id))
+        task_checkpoint_id = input("Введите id задачи, которому вы хотите поменять статус ")
+        protection = input("Вы уверены, что хотите поменять статус выполнения задания?(y/n) ")
+        if protection == "y":
+            self.task_service.checkout(int(task_checkpoint_id))
+        else:
+            return
+        print(self.task_service.get_tasks())
         input("Нажмите любую кнопку, что бы продолжить ")
