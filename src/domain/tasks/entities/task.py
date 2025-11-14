@@ -5,5 +5,4 @@ import attr
 class Task:
     user_task: str
     user_chekpoint: bool
-
     id_: int | None = None

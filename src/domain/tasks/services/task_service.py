@@ -18,3 +18,6 @@ class TaskService:
 
     def delete_task(self, task_delete_id: int) -> Task:
         return self.task_repo.delete_by_id(task_delete_id)
+
+    def checkpoint(self, task: Task) -> Task:
+        return  self.checkpoint(task)

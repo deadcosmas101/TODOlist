@@ -63,4 +63,7 @@ class CLI:
         input("Нажмите любую кнопку, что бы продолжить ")
 
     def checkpoint(self):
+        self.task_service.get_tasks()
+        task_checkpoint_id = input("Введите id задачи, которую вы выпольнили")
+        self.task_service.checkpoint(not(task_checkpoint_id))
         input("Нажмите любую кнопку, что бы продолжить ")
